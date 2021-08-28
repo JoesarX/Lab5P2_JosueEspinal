@@ -159,6 +159,7 @@ public class Principal extends javax.swing.JFrame {
         menu3 = new javax.swing.JMenuItem();
         menu4 = new javax.swing.JMenuItem();
         menu5 = new javax.swing.JMenuItem();
+        menu6 = new javax.swing.JMenuItem();
         signOut = new javax.swing.JMenuItem();
 
         user_tb.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -1301,6 +1302,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(menu5);
 
+        menu6.setText("CEO");
+        menu6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu6);
+
         signOut.setText("SIGN OUT");
         signOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1341,7 +1350,11 @@ public class Principal extends javax.swing.JFrame {
                 user_tb.setText("");
                 password_tb.setText("");
                 if (usuarios.get(i) instanceof CEO) {
-
+                    menu1.setEnabled(false);
+                    menu2.setEnabled(false);
+                    menu3.setEnabled(true);
+                    menu4.setEnabled(true);
+                    menu5.setEnabled(true);
                 } else if (usuarios.get(i) instanceof Decano) {
                     menu1.setEnabled(false);
                     menu2.setEnabled(false);
@@ -1687,9 +1700,9 @@ public class Principal extends javax.swing.JFrame {
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i) instanceof Docente) {
                 nodo_docente = new DefaultMutableTreeNode(usuarios.get(i).getNombre() + " " + usuarios.get(i).getApellido());
-                for(int j = 0; j < usuarios.size(); j++){
+                for (int j = 0; j < usuarios.size(); j++) {
                     raiz.add(nodo_docente);
-                    if (usuarios.get(i) instanceof Alumno){
+                    if (usuarios.get(i) instanceof Alumno) {
                         nodo_estudiante = new DefaultMutableTreeNode(usuarios.get(i).getNombre() + " " + usuarios.get(i).getApellido());
                         nodo_docente.add(nodo_estudiante);
                     }
@@ -1699,6 +1712,10 @@ public class Principal extends javax.swing.JFrame {
         m.reload();
         tree.setModel(m);
     }//GEN-LAST:event_menu5ActionPerformed
+
+    private void menu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1781,6 +1798,7 @@ public class Principal extends javax.swing.JFrame {
         alumno.setLocationRelativeTo(this);
         alumno.setVisible(true);
     }
+
     public void decano() {
         //opciones previas
         decano.setModal(true);
@@ -1900,6 +1918,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu3;
     private javax.swing.JMenuItem menu4;
     private javax.swing.JMenuItem menu5;
+    private javax.swing.JMenuItem menu6;
     private javax.swing.JSpinner nota;
     private javax.swing.JTextField participacion;
     private javax.swing.JTextField password_tb;
